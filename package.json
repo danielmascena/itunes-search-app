@@ -7,7 +7,7 @@
   "author": "danielmascena@gmail.com",
   "license": "MIT",
   "scripts": {
-    "start": "npx ts-node index.ts",
+    "start": "npx nodemon index.ts",
     "build": "npx tsc"
   },
   "dependencies": {
@@ -15,5 +15,8 @@
     "express": "^4.17.3",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
