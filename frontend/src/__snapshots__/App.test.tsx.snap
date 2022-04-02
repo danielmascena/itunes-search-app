@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should renders the App component 1`] = `
+Array [
+  <header>
+    <h1>
+      Header
+    </h1>
+  </header>,
+  <main>
+    <h1>
+      iTunes Search App
+    </h1>
+  </main>,
+  <footer>
+    <p>
+      Copyright
+    </p>
+  </footer>,
+]
+`;
