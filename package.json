@@ -17,6 +17,7 @@
     "typescript": "^4.6.3"
   },
   "devDependencies": {
+    "@types/redux": "^3.6.0",
     "nodemon": "^2.0.15"
   }
 }

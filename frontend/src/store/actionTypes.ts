@@ -1,0 +1,5 @@
+
+export const SEARCH_BY_ARTIST = "SEARCH_BY_ARTIST";
+export const SEARCH_BY_ALBUM = "SEARCH_BY_ALBUM";
+export const SEARCH_BY_SONG = "SEARCH_BY_SONG";
+export const CLEAN_UP_SEARCH = "CLEAN_UP_SEARCH";
