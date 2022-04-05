@@ -3,6 +3,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 
 import Home from './pages/Home';
+import * as api from "./service";
 
 import './App.css';
 
@@ -14,6 +15,11 @@ const App: React.FC = () => {
     (state: AppState) => state.mediaCollection,
     shallowEqual
   );
+
+  React.useEffect(() => {
+    api.getMediaResourceArtistByTerm('iron maiden')
+      .then(console.log);
+  }, []);
 
   return (
     <Home />
