@@ -1,10 +1,12 @@
 import * as actionTypes from "./actionTypes";
 
-export function addArticle(search: iSearch) {
+export function getArtists(searchTerm: iSearch) {
   const action: SearchAction = {
     type: actionTypes.SEARCH_BY_ARTIST,
-    search
+    search: searchTerm
   };
 
-  return (dispatch: DispatchType) => dispatch(action);
+  return (dispatch: DispatchType, getState, api) => {
+    dispatch(action);
+  }
 }

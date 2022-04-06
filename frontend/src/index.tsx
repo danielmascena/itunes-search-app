@@ -4,14 +4,15 @@ import { createStore, applyMiddleware, Store } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
-import './index.css';
 import App from './App';
 import reducer from "./store/reducer";
+import * as mediaApiService from "./service";
 import reportWebVitals from './reportWebVitals';
+import './index.css';
 
 const store: Store<AppState, SearchAction> & {
   dispatch: DispatchType;
-} = createStore(reducer, applyMiddleware(thunk));
+} = createStore(reducer, applyMiddleware(thunk.withExtraArgument(mediaApiService)));
 
 ReactDOM.render(
   <Provider store={store}>

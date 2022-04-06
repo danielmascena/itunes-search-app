@@ -1,24 +1,23 @@
 interface iSearch {
-    term: string,
-    type?: "SONG" | "ARTIST" | "ALBUM" | "ALL"
+    term: string;
+    type?: "SONG" | "ARTIST" | "ALBUM" | "ALL";
 }
-
 interface IMedia {
-    artistId: number,
-    artistName: string,
-    trackId: number,
-    collectionName: string,
-    artworkUrl100: string
+    artistId: number;
+    artistName: string;
+    trackId?: number;
+    collectionName?: string;
+    artworkUrl100?: string;
 }
-
-type AppState = {
+declare type AppState = {
+    offset: number;
+    limit: number;
     search: iSearch;
     mediaCollection: IMedia[];
 };
-
-type SearchAction = {
+declare type SearchAction = {
     type: string;
     search: iSearch;
 };
-
-type DispatchType = (args: SearchAction) => SearchAction;
+declare type DispatchType = (args: SearchAction) => SearchAction;
+/** Generate using https://app.quicktype.io/ */
