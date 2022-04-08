@@ -23,7 +23,7 @@ const Home = () => {
       <section>
         <MediaSearchForm />
         <MediaResourceList resources={[
-          {"artistId":886834, "artistName":"Ozzy Osbourne"}
+          {"artistId": 886834, "artistName": "Ozzy Osbourne"}
         ]} />
       </section>
     </Layout>
