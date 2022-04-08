@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 import InfiniteScroll from "react-infinite-scroll-component";
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
 
 import * as api from "../../service";
 import MediaResourceItem from "../MediaResourceItem";
@@ -14,7 +16,8 @@ const MediaResourceList: React.FC<Props> = React.memo(({resources = []}: Props) 
 
     const [collection, setCollection] = React.useState(resources);
     const fetchData = React.useCallback(() => {
-        api.getMediaResourceArtistByTerm('iron maiden')
+        //api.getMediaResourceArtistByTerm('iron maiden')
+        api.getMediaResourceAlbumByTerm('powerslave')
         .then(response => {
             if (response.status === 200) {
                 setCollection([...collection, ...response.data.results])
@@ -31,7 +34,7 @@ const MediaResourceList: React.FC<Props> = React.memo(({resources = []}: Props) 
     return (
         <section>
             <h2>List of Resources</h2>
-            <ul>
+            <List>
                 <InfiniteScroll
                     dataLength={collection.length}
                     next={fetchData}
@@ -39,13 +42,13 @@ const MediaResourceList: React.FC<Props> = React.memo(({resources = []}: Props) 
                     loader={<h4>Loading...</h4>}
                 >
                     {collection.map((resource: IMedia) => (
-                        <li key={resource.artistId + Date.now()}>
-                            {/*<MediaResourceItem {...resource} />*/}
-                            {resource.artistName}
-                        </li>
+                        <>
+                            <MediaResourceItem media={resource} />
+                            <Divider variant="inset" component="li" />
+                        </>
                     ))}
                 </InfiniteScroll>
-            </ul>
+            </List>
         </section>
     );
 });
