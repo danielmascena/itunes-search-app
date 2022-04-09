@@ -22,18 +22,15 @@ const MediaResourceList: React.FC = React.memo(() => {
     );
     const hasMoreToLoad: boolean = useSelector(
         (state: MediaState) => state.searchByArtist || state.searchByAlbum || state.searchBySong);
-    const queryTerm: string = useSelector((state: MediaState) => state.searchTerm);
-
     
     const loadNextResults = React.useCallback(() => {
         dispatch(fetchLoadResults())
     }, [dispatch]);
     
-    console.log({resources}, hasMoreToLoad, queryTerm, Array.isArray(resources));
     return (
         <section>
             <h4>List of Results</h4>
-            {resources.length > 0
+            { resources.length > 0
                 ? (
                     <List>
                         <InfiniteScroll
