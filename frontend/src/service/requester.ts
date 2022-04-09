@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const CONFIG_BASE_URL = "https://itunes.apple.com/search?limit=10";
+import { BASE_ENDPOINT_URL } from "../config";
 
 enum MediaType {
     Track = "track",
@@ -12,7 +12,7 @@ enum MediaType {
  * Abstraction for the http request library. 
  */
 const instance = axios.create({
-  baseURL: CONFIG_BASE_URL,
+  baseURL: BASE_ENDPOINT_URL,
   timeout: 1000,
   transformResponse: [
     (responseData) => {

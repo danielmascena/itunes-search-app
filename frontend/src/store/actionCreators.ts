@@ -4,11 +4,18 @@ import { ThunkAction } from 'redux-thunk'
 import * as actions from "./actions";
 import * as serviceAPI from "../service";
 
+import { TOTAL_AMOUNT_CATEGORIES_TO_SEARCH } from "../config";
+
 export type MediaThunk = ThunkAction<void, MediaState, null, Action<SearchAction>>;
 
 const { min } = Math;
 
-const TOTAL_CATEGORIES_SEARCHED = 3;
+let listPointer = 0;
+const getCurrentListType = (...rest: Array<Array<Media>>): Media[] => {
+  const currentList = rest[listPointer % TOTAL_AMOUNT_CATEGORIES_TO_SEARCH];
+  listPointer += 1;
+  return currentList
+};
 
 export const fetchArtistByTerm = (): MediaThunk => async (dispatch: DispatchType, getState) => {
   const { searchTerm, offsetArtist, searchByArtist, listArtist: { length } } = getState();
@@ -71,21 +78,17 @@ export const loadResultsIntoCollection = (): MediaThunk => async (dispatch: Disp
   const { length: artistLen } = listArtist;
   const { length: albumLen } = listAlbum;
   const { length: songLen } = listSong;
-  const containerList = [listArtist, listAlbum, listSong];
 
   let count = min(10, artistLen + albumLen + songLen);
-  let i = 0;
   let collectionEnhanced = [...mediaCollection];
+
   while (count > 0) {
-    // 
-    const singleSearchTypeList = containerList[i % TOTAL_CATEGORIES_SEARCHED];
+    const singleSearchTypeList = getCurrentListType(listArtist, listAlbum, listSong);
     const itemPopped = singleSearchTypeList.shift();
     if (itemPopped) {
-      //mediaCollection.push(itemPopped);
       collectionEnhanced = [...collectionEnhanced, itemPopped];
       count--;
     }
-    i++;
   }
   
   if (artistLen > listArtist.length) {
