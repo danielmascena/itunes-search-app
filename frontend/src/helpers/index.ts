@@ -5,6 +5,15 @@ enum MediaType {
     Artist = "artist",
 }
 
+const shortUrl = (fullUrl: string, beginTerm = 'artist') => {
+    const foundBeginIndex = fullUrl.indexOf(beginTerm),
+        foundEndIndex = fullUrl.lastIndexOf('?');
+    if (foundBeginIndex !== -1) {
+        return fullUrl.slice(foundBeginIndex, foundEndIndex);
+    }
+    return fullUrl;
+}
+
 export const getMediaDescription = ({
     mediaType,
     primaryGenreName,
@@ -12,14 +21,14 @@ export const getMediaDescription = ({
     collectionName = '',
     trackName = '',
     artistLinkUrl
-}: IMedia) => {
+}: Media) => {
     let primary = '',
         secondary = '';
     
     switch (mediaType) {
         case MediaType.Artist:
             primary = artistName;
-            secondary = artistLinkUrl;
+            secondary = shortUrl(artistLinkUrl);
             break;
         case MediaType.Collection:
             primary = collectionName;
@@ -32,5 +41,5 @@ export const getMediaDescription = ({
         default:
             primary = secondary = 'Unknown';
     }
-    return [primary, secondary, `Artist genre: ${primaryGenreName}`];
+    return [primary, secondary, ` Artist genre: ${primaryGenreName}`];
 };

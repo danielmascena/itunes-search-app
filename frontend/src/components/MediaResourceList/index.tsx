@@ -7,49 +7,48 @@ import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 
-import * as api from "../../service";
 import MediaResourceItem from "../MediaResourceItem";
 import ResultNotFound from "../ResultsNotFound";
 
-interface Props {
-    resources: Media[];
-}
+import {getMoreSearchResults} from "../../store/actionCreators";
 
-const MediaResourceList: React.FC<Props> = React.memo(({resources = []}: Props) => {
+const MediaResourceList: React.FC = React.memo(() => {
 
-    const [collection, setCollection] = React.useState(resources);
-    const fetchData = React.useCallback(() => {
-        api.getMediaResourceArtistByTerm('iron maiden')
-        //api.getMediaResourceAlbumByTerm('british steel')
-        .then(response => {
-            if (response.status === 200) {
-                setCollection([...collection, ...response.data.results])
-            }
-        });
-    }, [collection]);
-
-    React.useEffect(() => {
-        if (collection.length > 0 && collection.length <= 10) {
-            fetchData();
-        }
-    }, [fetchData, collection.length]);
+    const dispatch: Dispatch<any> = useDispatch();
+    
+    const resources: readonly Media[] = useSelector(
+        (state: MediaState) => state.mediaCollection
+    );
+    const hasMoreToLoad: boolean = useSelector(
+        (state: MediaState) => state.shouldLoadMoreResults);
+    
+    const loadNextResults = React.useCallback(() => {
+       dispatch(getMoreSearchResults(resources.length));
+    }, [dispatch, resources]);
 
     return (
         <section>
             <h2>List of Resources</h2>
-            {resources.length 
+            {resources.length > 0
                 ? (
                     <List>
                         <InfiniteScroll
-                            dataLength={collection.length}
-                            next={fetchData}
-                            hasMore={true}
-                            loader={<Box sx={{ width: '100%', textAlign: 'center' }}>
+                            dataLength={resources.length}
+                            next={loadNextResults}
+                            hasMore={hasMoreToLoad}
+                            loader={
+                                <Box sx={{ width: '100%', textAlign: 'center' }}>
                                     <CircularProgress disableShrink />
                                 </Box>
                             }
+                            endMessage={
+                                <p style={{ textAlign: 'center' }}>
+                                    <b>End of the results</b>
+                                </p>
+                            }
+                            scrollThreshold={0.95}
                         >
-                            {collection.map((resource: Media) => (
+                            {resources.map((resource: Media) => (
                                 <>
                                     <MediaResourceItem media={resource} />
                                     <Divider variant="inset" component="li" />
