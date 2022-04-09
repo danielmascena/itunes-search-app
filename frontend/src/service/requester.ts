@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const CONFIG_BASE_URL = "https://itunes.apple.com/search";
+const CONFIG_BASE_URL = "https://itunes.apple.com/search?limit=10";
 
 enum MediaType {
     Track = "track",

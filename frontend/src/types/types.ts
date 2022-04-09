@@ -19,27 +19,32 @@ enum MediaType {
 }
 
 type MediaState = {
-    offset: number;
-    searchByArtist: boolean;
-    searchBySong: boolean;
-    searchByAlbum: boolean;
     searchTerm: string;
     mediaCollection: Media[];
-    collectionSize: number;
+    listArtist: Media[];
+    offsetArtist: number;
+    searchByArtist: boolean;
+    listAlbum: Media[];
+    offsetAlbum: number;
+    searchByAlbum: boolean;
+    listSong: Media[];
+    offsetSong: number;
+    searchBySong: boolean;
+
     shouldLoadMoreResults: boolean;
 };
 
 type PayloadSearch = { 
     term?: string;
     list?: Media[];
-    offset?: number;
-    size?: number;
+    offsetIncrement?: number;
 };
 
 type SearchAction = {
     type: string;
     payload?: PayloadSearch;
 };
+
 type DispatchType = (args: SearchAction) => SearchAction;
 
 
@@ -116,11 +121,9 @@ enum WrapperArtistType {
     Song = "song",
 }
 
-
  enum WrapperTrackType {
     Track = "track",
 }
-
 
  interface Album {
     wrapperType:            WrapperAlbumType;
