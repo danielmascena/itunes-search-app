@@ -2,8 +2,8 @@ import * as React from "react";
 
 const Header = () => (
     <header>
-        <h1>Header</h1>
+        <h5>iTunes Search API</h5>
     </header>
 );
 
-export default Header;
+export default React.memo(Header);

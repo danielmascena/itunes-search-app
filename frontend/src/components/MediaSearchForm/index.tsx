@@ -5,14 +5,14 @@ import Box from "@mui/material/Box";
 import { debounce } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
-import {defineSearchByTerm} from "../../store/actionCreators";
+import { defineSearchByTerm } from "../../store/actionCreators";
 
 const MediaSearchForm: React.FC = () => {
   const dispatch: Dispatch<any> = useDispatch();
 
   const inputHandler = debounce(
     ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
-      dispatch(defineSearchByTerm(value))
+      dispatch(defineSearchByTerm(value));
     },
     500
   );
@@ -31,6 +31,7 @@ const MediaSearchForm: React.FC = () => {
         label="Search"
         type="search"
         variant="standard"
+        placeholder="Artists, songs, or albums"
         onChange={inputHandler}
       />
     </Box>

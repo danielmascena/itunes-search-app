@@ -16,20 +16,23 @@ declare enum MediaType {
     Artist = "artist"
 }
 declare type MediaState = {
-    offset: number;
-    searchByArtist: boolean;
-    searchBySong: boolean;
-    searchByAlbum: boolean;
     searchTerm: string;
     mediaCollection: Media[];
-    collectionSize: number;
+    listArtist: Media[];
+    offsetArtist: number;
+    searchByArtist: boolean;
+    listAlbum: Media[];
+    offsetAlbum: number;
+    searchByAlbum: boolean;
+    listSong: Media[];
+    offsetSong: number;
+    searchBySong: boolean;
     shouldLoadMoreResults: boolean;
 };
 declare type PayloadSearch = {
     term?: string;
     list?: Media[];
-    offset?: number;
-    size?: number;
+    offsetIncrement?: number;
 };
 declare type SearchAction = {
     type: string;

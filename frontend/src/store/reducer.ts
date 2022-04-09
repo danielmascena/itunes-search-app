@@ -1,13 +1,17 @@
 import * as actionTypes from "./actionTypes";
 
 const initialState: MediaState = {
-    offset: 0,
     searchTerm: "",
-    searchByArtist: true,
-    searchBySong: true,
-    searchByAlbum: true,
     mediaCollection: [],
-    collectionSize: 0,
+    listArtist: [],
+    offsetArtist: 0,
+    searchByArtist: true,
+    listAlbum: [],
+    offsetAlbum: 0,
+    searchByAlbum: true,
+    listSong: [],
+    offsetSong: 0,
+    searchBySong: true,
     shouldLoadMoreResults: true
 };
 
@@ -24,38 +28,58 @@ const reducer = (
         case actionTypes.SET_MEDIA_COLLECTION:
             return {
                 ...state,
-                mediaCollection: [...state.mediaCollection, ...payload.list],
-            }
+                mediaCollection: payload.list
+            };
+        case actionTypes.SET_ARTIST_LIST:
+            return {
+                ...state,
+                listArtist: payload.list
+            };
         case actionTypes.SET_SEARCH_OFF_BY_ARTIST:
             return {
                 ...state,
                 searchByArtist: false
+            };
+        case actionTypes.UPDATE_OFFSET_ARTIST:
+            return {
+                ...state,
+                offsetArtist: state.offsetArtist + payload.offsetIncrement
+            };
+        case actionTypes.SET_ALBUM_LIST:
+            return {
+                ...state,
+                listAlbum: payload.list
             };
         case actionTypes.SET_SEARCH_OFF_BY_ALBUM:
             return {
                 ...state,
                 searchByAlbum: false
             };
+        case actionTypes.UPDATE_OFFSET_ALBUM:
+            return {
+                ...state,
+                offsetAlbum: state.offsetAlbum + payload.offsetIncrement
+            };
+        case actionTypes.SET_SONG_LIST:
+            return {
+                ...state,
+                listSong: payload.list
+            };
         case actionTypes.SET_SEARCH_OFF_BY_SONG:
             return {
                 ...state,
                 searchBySong: false
             };
-        case actionTypes.SET_SEARCH_OFFSET:
+        case actionTypes.UPDATE_OFFSET_SONG:
             return {
                 ...state,
-                offset: payload.offset
+                offsetSong: state.offsetSong + payload.offsetIncrement
             };
-        case actionTypes.SET_COLLECTION_SIZE:
-            return {
-                ...state,
-                collectionSize: payload.size
-            }
         case actionTypes.SET_RESULTS_LOAD_FINISHED:
             return {
                 ...state,
                 shouldLoadMoreResults: false
-            }
+            };
         case actionTypes.RESET_SEARCH:
             return initialState;
         default:
