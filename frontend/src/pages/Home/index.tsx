@@ -6,7 +6,7 @@ import MediaResourceList from "../../components/MediaResourceList";
 
 const Home = () =>  (
   <Layout>
-    <h1>iTunes Search App</h1>
+    <h3>Music Search App</h3>
     <section>
       <MediaSearchForm />
       <MediaResourceList />

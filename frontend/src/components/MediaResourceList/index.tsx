@@ -10,26 +10,27 @@ import CircularProgress from '@mui/material/CircularProgress';
 import MediaResourceItem from "../MediaResourceItem";
 import ResultNotFound from "../ResultsNotFound";
 
-import {getMoreSearchResults} from "../../store/actionCreators";
+import { fetchLoadResults } from "../../store/actionCreators";
 
 const MediaResourceList: React.FC = React.memo(() => {
 
     const dispatch: Dispatch<any> = useDispatch();
     
     const resources: readonly Media[] = useSelector(
-        (state: MediaState) => state.mediaCollection
+        (state: MediaState) => state.mediaCollection,
+        shallowEqual
     );
     const hasMoreToLoad: boolean = useSelector(
-        (state: MediaState) => state.shouldLoadMoreResults);
+        (state: MediaState) => state.searchByArtist || state.searchByAlbum || state.searchBySong);
     
     const loadNextResults = React.useCallback(() => {
-       dispatch(getMoreSearchResults(resources.length));
-    }, [dispatch, resources]);
-
+        dispatch(fetchLoadResults())
+    }, [dispatch]);
+    
     return (
         <section>
-            <h2>List of Resources</h2>
-            {resources.length > 0
+            <h4>List of Results</h4>
+            { resources.length > 0
                 ? (
                     <List>
                         <InfiniteScroll

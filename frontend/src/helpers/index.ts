@@ -12,7 +12,9 @@ const shortUrl = (fullUrl: string, beginTerm = 'artist') => {
         return fullUrl.slice(foundBeginIndex, foundEndIndex);
     }
     return fullUrl;
-}
+};
+
+export const getFullMediaTitle = (primaryText: string, auxiliaryText: MediaType) => `${primaryText} - ${auxiliaryText}`;
 
 export const getMediaDescription = ({
     mediaType,
@@ -27,15 +29,15 @@ export const getMediaDescription = ({
     
     switch (mediaType) {
         case MediaType.Artist:
-            primary = artistName;
+            primary = getFullMediaTitle(artistName, mediaType);
             secondary = shortUrl(artistLinkUrl);
             break;
         case MediaType.Collection:
-            primary = collectionName;
+            primary = getFullMediaTitle(collectionName, mediaType);
             secondary = artistName;
             break;
         case MediaType.Track:
-            primary = trackName;
+            primary = getFullMediaTitle(trackName, mediaType);
             secondary = `${collectionName} - ${artistName}`;
             break;
         default:
