@@ -1,18 +1,22 @@
-import React from 'react';
+import * as React from "react";
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware, Store } from "redux";
+import { createStore, applyMiddleware, Store, compose } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
 import App from './App';
 import reducer from "./store/reducer";
-import * as mediaApiService from "./service";
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
-const store: Store<AppState, SearchAction> & {
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store: Store<MediaState, SearchAction> & {
   dispatch: DispatchType;
-} = createStore(reducer, applyMiddleware(thunk.withExtraArgument(mediaApiService)));
+} = createStore(
+  reducer, /* preloadedState, */ composeEnhancers(
+  applyMiddleware(thunk)
+));
 
 ReactDOM.render(
   <Provider store={store}>

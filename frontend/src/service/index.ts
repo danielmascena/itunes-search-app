@@ -7,21 +7,14 @@ const mapOptionToParam = new Map([
   ["song", ["songTerm", "song"]]
 ]);
 
-interface IFetchArguments {
-  searchTerm: string; 
-  offset: number; 
-  limit: number;
-}
-
 interface ServerResponse<T> {
   data: ResponseResult<T>;
   status: number;
 }
 interface ResponseResult<T> {
-    resultCount: number;
-    results:     T[];
+  resultCount: number;
+  results:     T[];
 }
-
 
 /*
  * entities: musicArtist (allArtist), album, mix, song.
@@ -30,7 +23,7 @@ interface ResponseResult<T> {
 
 // https://itunes.apple.com/search?media=music&attribute=artistTerm&entity=musicArtist&term=iron
 export const getMediaResourceArtistByTerm = async (searchTerm: string, offset = 0, limit = 10) => 
-  requester().get<ServerResponse<Artist>>(`&entity=musicArtist&attribute=artistTerm&term=${encodeURI(searchTerm)}&offset=${offset}&limit=${limit}`);
+  requester().get<ServerResponse<Artist>>(`?media=music&entity=musicArtist&attribute=artistTerm&term=${encodeURI(searchTerm)}&offset=${offset}&limit=${limit}`);
 
 // https://itunes.apple.com/search?media=music&attribute=albumTerm&entity=album&term=powerslave
 export const getMediaResourceAlbumByTerm = async (searchTerm: string) =>
