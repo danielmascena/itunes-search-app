@@ -1,20 +1,18 @@
-import React from "react";
+import * as React from "react";
+import { useDispatch } from "react-redux";
+import { Dispatch } from "redux";
 import Box from "@mui/material/Box";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import { debounce } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
-import useFilter, { IFilterState, FilterAction } from "./useFilter";
+import {defineSearchByTerm} from "../../store/actionCreators";
 
 const MediaSearchForm: React.FC = () => {
-  const [filterState, filterDispatch] = useFilter();
-  const { song, artist, album } = filterState;
+  const dispatch: Dispatch<any> = useDispatch();
 
   const inputHandler = debounce(
     ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(value);
+      dispatch(defineSearchByTerm(value))
     },
     500
   );
@@ -35,32 +33,6 @@ const MediaSearchForm: React.FC = () => {
         variant="standard"
         onChange={inputHandler}
       />
-      <FormGroup row>
-        <FormControlLabel
-          control={<Checkbox />}
-          label="All"
-          onClick={() => filterDispatch({type: "filterAll"})}
-          checked={song && album && artist}
-        />
-        <FormControlLabel
-          control={<Checkbox />}
-          label="Artist"
-          onClick={() => filterDispatch({type: "filterArtist", payload: {name: "artist", value: !artist}})}
-          checked={artist}
-        />
-        <FormControlLabel 
-            control={<Checkbox />} 
-            label="Song" 
-            onClick={() => filterDispatch({type: "filterSong", payload: {name: "song", value: !song}})}
-            checked={song} 
-        />
-        <FormControlLabel
-          control={<Checkbox />}
-          label="Album"
-          onClick={() => filterDispatch({type: "filterAlbum", payload: {name: "album", value: !album}})}
-          checked={album}
-        />
-      </FormGroup>
     </Box>
   );
 };

@@ -1,9 +1,5 @@
-interface iSearch {
-    term: string;
-    type?: "SONG" | "ARTIST" | "ALBUM" | "ALL";
-}
 
-interface IMedia {
+interface Media {
     mediaType: MediaType;
     artistId: number;
     artistName: string;
@@ -22,15 +18,27 @@ enum MediaType {
     Artist = "artist",
 }
 
-type AppState = {
+type MediaState = {
     offset: number;
-    limit: number;
-    search: iSearch;
-    mediaCollection: IMedia[];
+    searchByArtist: boolean;
+    searchBySong: boolean;
+    searchByAlbum: boolean;
+    searchTerm: string;
+    mediaCollection: Media[];
+    collectionSize: number;
+    shouldLoadMoreResults: boolean;
 };
+
+type PayloadSearch = { 
+    term?: string;
+    list?: Media[];
+    offset?: number;
+    size?: number;
+};
+
 type SearchAction = {
     type: string;
-    search: iSearch;
+    payload?: PayloadSearch;
 };
 type DispatchType = (args: SearchAction) => SearchAction;
 
