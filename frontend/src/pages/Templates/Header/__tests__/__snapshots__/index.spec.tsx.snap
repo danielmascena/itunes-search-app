@@ -2,8 +2,8 @@
 
 exports[`should renders the Header component 1`] = `
 <header>
-  <h1>
-    Header
-  </h1>
+  <h5>
+    iTunes Search API
+  </h5>
 </header>
 `;

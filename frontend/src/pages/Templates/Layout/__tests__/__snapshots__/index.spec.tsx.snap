@@ -3,14 +3,20 @@
 exports[`should renders the Layout component 1`] = `
 Array [
   <header>
-    <h1>
-      Header
-    </h1>
+    <h5>
+      iTunes Search API
+    </h5>
   </header>,
   <main />,
   <footer>
     <p>
-      Copyright
+      Copyright © 
+      <a
+        href="https://github.com/danielmascena"
+        title="author"
+      >
+        Daniel Mascena
+      </a>
     </p>
   </footer>,
 ]

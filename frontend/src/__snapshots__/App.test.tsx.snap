@@ -3,18 +3,70 @@
 exports[`should renders the App component 1`] = `
 Array [
   <header>
-    <h1>
-      Header
-    </h1>
+    <h5>
+      iTunes Search API
+    </h5>
   </header>,
   <main>
-    <h1>
-      iTunes Search App
-    </h1>
+    <h3>
+      Music Search App
+    </h3>
+    <section>
+      <form
+        autoComplete="off"
+        className="MuiBox-root css-13r4j3i"
+        noValidate={true}
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+        >
+          <label
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink={false}
+            htmlFor="search-textbox"
+            id="search-textbox-label"
+          >
+            Search
+          </label>
+          <div
+            className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-1480iag-MuiInputBase-root-MuiInput-root"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInput-input MuiInputBase-input MuiInputBase-inputTypeSearch css-c63i49-MuiInputBase-input-MuiInput-input"
+              data-testid="search-textbox"
+              disabled={false}
+              id="search-textbox"
+              name="search-textbox"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Artists, songs, or albums"
+              required={false}
+              type="search"
+            />
+          </div>
+        </div>
+      </form>
+      <section>
+        <h4>
+          List of Results
+        </h4>
+      </section>
+    </section>
   </main>,
   <footer>
     <p>
-      Copyright
+      Copyright © 
+      <a
+        href="https://github.com/danielmascena"
+        title="author"
+      >
+        Daniel Mascena
+      </a>
     </p>
   </footer>,
 ]

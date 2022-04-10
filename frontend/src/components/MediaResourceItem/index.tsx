@@ -6,16 +6,13 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 
 import {getMediaDescription} from "../../helpers";
-interface Props {
-  media: Media;
-}
 
-const MediaResourceItem: React.FC<Props> = ({ media }) => {
+const MediaResourceItem: React.FC<Media> = (props) => {
     const {
         artistName,
         artworkUrl100
-    } = media;
-    const [primaryText, secondaryText, extraText] = getMediaDescription(media);
+    } = props;
+    const [primaryText, secondaryText, extraText] = getMediaDescription(props);
 
   return (
     <ListItem alignItems="flex-start">

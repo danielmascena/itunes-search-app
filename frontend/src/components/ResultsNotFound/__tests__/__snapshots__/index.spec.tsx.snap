@@ -2,6 +2,6 @@
 
 exports[`should renders the ResultsNotFound component 1`] = `
 <div>
-  You got zero results. Try changing your search.
+  You got zero results. Try again changing the term of your search.
 </div>
 `;
