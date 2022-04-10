@@ -30,8 +30,7 @@ type MediaState = {
     listSong: Media[];
     offsetSong: number;
     searchBySong: boolean;
-
-    shouldLoadMoreResults: boolean;
+    hasRequestCrash: boolean;
 };
 
 type PayloadSearch = { 
