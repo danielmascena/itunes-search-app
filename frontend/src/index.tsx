@@ -18,6 +18,8 @@ const store: Store<MediaState, SearchAction> & {
   applyMiddleware(thunk)
 ));
 
+export const {dispatch} = store;
+
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
