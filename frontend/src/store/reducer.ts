@@ -12,7 +12,7 @@ const initialState: MediaState = {
     listSong: [],
     offsetSong: 0,
     searchBySong: true,
-    shouldLoadMoreResults: true
+    hasRequestCrash: false
 };
 
 const reducer = (
@@ -23,7 +23,8 @@ const reducer = (
         case actionTypes.SET_SEARCH_TERM:
             return {
                 ...state,
-                searchTerm: payload.term
+                searchTerm: payload.term,
+                hasRequestCrash: false
             };
         case actionTypes.SET_MEDIA_COLLECTION:
             return {
@@ -75,10 +76,13 @@ const reducer = (
                 ...state,
                 offsetSong: state.offsetSong + payload.offsetIncrement
             };
-        case actionTypes.SET_RESULTS_LOAD_FINISHED:
+        case actionTypes.SET_REQUEST_ERROR:
             return {
                 ...state,
-                shouldLoadMoreResults: false
+                hasRequestCrash: true,
+                searchBySong: false,
+                searchByAlbum: false,
+                searchByArtist: false
             };
         case actionTypes.RESET_SEARCH:
             return initialState;

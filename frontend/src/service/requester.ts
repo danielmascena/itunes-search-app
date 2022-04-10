@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { dispatch } from "../index";
+import { setRequestFail } from "../store/actions";
 import { BASE_ENDPOINT_URL } from "../config";
 
 enum MediaType {
@@ -13,7 +15,6 @@ enum MediaType {
  */
 const instance = axios.create({
   baseURL: BASE_ENDPOINT_URL,
-  timeout: 1000,
   transformResponse: [
     (responseData) => {
       try {
@@ -60,6 +61,7 @@ const instance = axios.create({
         });
         return {results: mediaList, resultCount};
       } catch (error) {
+        dispatch(setRequestFail());
         throw Error(
           `[requestClient] Error parsingJSON data - ${JSON.stringify(
             error

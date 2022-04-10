@@ -60,3 +60,7 @@ export const updateOffsetSong = (offsetIncrement: number) => ({
     type: actionTypes.UPDATE_OFFSET_SONG,
     payload: { offsetIncrement }
 });
+
+export const setRequestFail = () => ({
+  type: actionTypes.SET_REQUEST_ERROR
+});

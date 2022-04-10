@@ -27,7 +27,7 @@ declare type MediaState = {
     listSong: Media[];
     offsetSong: number;
     searchBySong: boolean;
-    shouldLoadMoreResults: boolean;
+    hasRequestCrash: boolean;
 };
 declare type PayloadSearch = {
     term?: string;
