@@ -27,7 +27,7 @@ declare type MediaState = {
     listSong: Media[];
     offsetSong: number;
     searchBySong: boolean;
-    shouldLoadMoreResults: boolean;
+    hasRequestCrash: boolean;
 };
 declare type PayloadSearch = {
     term?: string;
@@ -38,6 +38,7 @@ declare type SearchAction = {
     type: string;
     payload?: PayloadSearch;
 };
+declare type TestElement = Document | Element | Window | Node;
 declare type DispatchType = (args: SearchAction) => SearchAction;
 /** Generate using https://app.quicktype.io/ */
 interface Artist {

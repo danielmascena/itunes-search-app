@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MediaResourceItem Component renders the MediaResourceItem component 1`] = `
+<li
+  className="MuiListItem-root MuiListItem-gutters MuiListItem-padding MuiListItem-alignItemsFlexStart css-hhvo2v-MuiListItem-root"
+  disabled={false}
+>
+  <div
+    className="MuiListItemText-root MuiListItemText-multiline css-konndc-MuiListItemText-root"
+  >
+    <span
+      className="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+    >
+      Iron Maiden - artist
+    </span>
+    <p
+      className="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-body2 css-1phucj-MuiTypography-root"
+      >
+        artist/iron-maiden/546381
+      </span>
+       Artist genre: metal
+    </p>
+  </div>
+</li>
+`;
