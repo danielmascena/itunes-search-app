@@ -1,8 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should renders the Header component 1`] = `
-<header>
-  <h5>
+exports[`renders the Header component 1`] = `
+<header
+  className="MuiBox-root css-0"
+>
+  <h5
+    className="MuiBox-root css-1yuhvjn"
+  >
     iTunes Search API
   </h5>
 </header>

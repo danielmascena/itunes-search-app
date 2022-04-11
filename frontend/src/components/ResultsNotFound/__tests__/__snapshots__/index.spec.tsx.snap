@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should renders the ResultsNotFound component 1`] = `
-<div>
+exports[`renders the ResultsNotFound component 1`] = `
+<div
+  className="MuiBox-root css-0"
+>
   You got zero results. Try again changing the term of your search.
 </div>
 `;

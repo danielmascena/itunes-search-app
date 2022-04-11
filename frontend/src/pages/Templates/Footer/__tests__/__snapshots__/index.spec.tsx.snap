@@ -1,11 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should renders the Footer component 1`] = `
-<footer>
-  <p>
-    Copyright © 
+exports[`renders the Footer component 1`] = `
+<footer
+  className="MuiBox-root css-0"
+>
+  <p
+    className="MuiBox-root css-0"
+  >
+    Copyright ©
     <a
+      className="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-zr39bh-MuiTypography-root-MuiLink-root"
       href="https://github.com/danielmascena"
+      onBlur={[Function]}
+      onFocus={[Function]}
       title="author"
     >
       Daniel Mascena

@@ -1,24 +1,21 @@
-import * as React from 'react';
+import * as React from "react";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 
-import {getMediaDescription} from "../../helpers";
+import { getMediaDescription } from "../../helpers";
 
 const MediaResourceItem: React.FC<Media> = (props) => {
-    const {
-        artistName,
-        artworkUrl100
-    } = props;
-    const [primaryText, secondaryText, extraText] = getMediaDescription(props);
+  const { artistName, artworkUrl100 } = props;
+  const [primaryText, secondaryText, additionalInformation] = getMediaDescription(props);
 
   return (
     <ListItem alignItems="flex-start">
       {artworkUrl100 && (
-          <ListItemAvatar>
-            <Avatar alt={artistName} src={artworkUrl100} />
+        <ListItemAvatar>
+          <Avatar alt={artistName} src={artworkUrl100} />
         </ListItemAvatar>
       )}
       <ListItemText
@@ -33,7 +30,7 @@ const MediaResourceItem: React.FC<Media> = (props) => {
             >
               {secondaryText}
             </Typography>
-            {extraText}
+            {additionalInformation}
           </React.Fragment>
         }
       />

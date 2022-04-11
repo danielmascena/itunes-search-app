@@ -1,23 +1,32 @@
 import * as React from "react";
-import { render, fireEvent, screen, cleanup } from '@testing-library/react';
+import renderer from "react-test-renderer";
+import { render, fireEvent, screen, cleanup } from "@testing-library/react";
 
 import MediaSearchBox from "../index";
 
-describe("MediaSearchForm Component", () => {
-    afterEach(() => {
-        cleanup();
-        jest.resetModules();
-    });
-    
-    test("Search box fires the change event with the correct query", async () => {
-        const changeHandler = jest.fn();
-        const querySearch = "I am with the band";
+const hasInputValue = (element: TestElement, inputValue: string) =>
+  screen.getByDisplayValue(inputValue) === element;
 
-        const { findByTestId } = render(<MediaSearchBox onChange={changeHandler} />);
-        const searchTextbox = await findByTestId("search-textbox");
+const changeHandler = jest.fn();
 
-        fireEvent.change(searchTextbox, { target: { value: querySearch } });
+describe("MediaSearchBox Component", () => {
+  afterEach(cleanup);
 
-        expect(changeHandler).toHaveBeenCalledWith(querySearch);
-    });
+  it("renders the MediaSearchBox component", () => {
+    expect(
+      renderer.create(<MediaSearchBox onSearch={changeHandler} />).toJSON()
+    ).toMatchSnapshot();
+  });
+
+  it("calls 'onSearch' prop on input change", async () => {
+    const querySearch = "I am with the band";
+    const placeholder = "Artists, songs, or albums";
+    render(
+      <MediaSearchBox placeholderText={placeholder} onSearch={changeHandler} />
+    );
+    const input = screen.getByPlaceholderText("Artists, songs, or albums");
+
+    fireEvent.change(input, { target: { value: querySearch } });
+    expect(hasInputValue(input, querySearch)).toBe(true);
+  });
 });

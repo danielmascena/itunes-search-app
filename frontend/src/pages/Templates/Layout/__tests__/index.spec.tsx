@@ -1,8 +1,17 @@
 import * as React from "react";
-import renderer from 'react-test-renderer';
+import renderer from "react-test-renderer";
+import Box from "@mui/material/Box";
 
 import Layout from "../index";
 
-test("should renders the Layout component", () => {
-    expect(renderer.create(<Layout />).toJSON()).toMatchSnapshot();
+test("renders the Layout component", () => {
+  expect(
+    renderer
+      .create(
+        <Layout>
+          <Box>Basic Layout</Box>
+        </Layout>
+      )
+      .toJSON()
+  ).toMatchSnapshot();
 });

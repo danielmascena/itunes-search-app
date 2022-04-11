@@ -1,20 +1,28 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
 
-import Home from './pages/Home';
+import Box from "@mui/material/Box";
 
-import './App.css';
+import Home from "./pages/Home";
+
+import "./App.css";
 
 const App: React.FC = () => {
   const hasErrorHappened: boolean = useSelector(
-    (state: MediaState) => state.hasRequestCrash);
-    
+    (state: MediaState) => state.hasRequestCrash
+  );
+
   return (
     <>
-      {hasErrorHappened && <div>Something bad happened with your request. Try refresh the search</div>}
+      {hasErrorHappened && (
+        <Box>
+          Something bad happened with your request. Clear the searc and try
+          again
+        </Box>
+      )}
       <Home />
     </>
   );
-}
+};
 
 export default App;

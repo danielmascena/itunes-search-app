@@ -38,6 +38,7 @@ declare type SearchAction = {
     type: string;
     payload?: PayloadSearch;
 };
+declare type TestElement = Document | Element | Window | Node;
 declare type DispatchType = (args: SearchAction) => SearchAction;
 /** Generate using https://app.quicktype.io/ */
 interface Artist {
