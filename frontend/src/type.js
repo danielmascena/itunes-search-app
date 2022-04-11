@@ -151,4 +151,4 @@ enum ArtistType {
 enum WrapperArtistType {
     Artist = "artist",
 }
-*/ 
+*/
