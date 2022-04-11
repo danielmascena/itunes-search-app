@@ -1,9 +1,13 @@
 import * as React from "react";
 
+import Box from "@mui/material/Box";
+
 const Header = () => (
-    <header>
-        <h5>iTunes Search API</h5>
-    </header>
+  <Box component="header">
+    <Box component="h5" mt={2}>
+      iTunes Search API
+    </Box>
+  </Box>
 );
 
 export default React.memo(Header);

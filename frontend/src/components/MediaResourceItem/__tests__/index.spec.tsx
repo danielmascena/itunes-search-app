@@ -1,15 +1,21 @@
 import * as React from "react";
-import { render, screen } from '@testing-library/react';
+import { render, screen } from "@testing-library/react";
+import renderer from "react-test-renderer";
+
+import { singleMockArtist } from "../../../helpers/mock-data";
 
 import MediaResourceItem from "../index";
 
 describe("MediaResourceItem Component", () => {
+  it("renders the MediaResourceItem component", () => {
+    expect(
+      renderer.create(<MediaResourceItem {...singleMockArtist} />).toJSON()
+    ).toMatchSnapshot();
+  });
 
-    it.todo("should render the markup");
-
-    it("renders the song name", () => {
-        render(<MediaResourceItem />);
-        const linkElement = screen.getByText(/iron maiden/i);
-        expect(linkElement).toBeInTheDocument();
-    });
+  it("renders the artist name", () => {
+    render(<MediaResourceItem {...singleMockArtist} />);
+    const listItem = screen.getByText(/iron maiden/i);
+    expect(listItem).toBeInTheDocument();
+  });
 });

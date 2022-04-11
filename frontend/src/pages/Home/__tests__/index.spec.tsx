@@ -1,23 +1,20 @@
 import * as React from "react";
-import { render, screen } from '@testing-library/react';
-import configureStore from 'redux-mock-store';
 
-import Home from '../index';
+import { render, screen, cleanup } from "../../../helpers/testUtils";
+import { singleMockArtist } from "../../../helpers/mock-data";
 
-const mockStore = configureStore([]);
+import Home from "../index";
 
 describe("Home Component", () => {
+  afterEach(cleanup);
 
-    let store;
-    beforeEach(() => {
-        store = mockStore({
-            myState: 'sample text',
-        });
+  it("renders with the a search term from the store", () => {
+    render(<Home />, {
+      initialState: {
+        searchTerm: "Queen",
+        mediaCollection: [singleMockArtist],
+      },
     });
-
-    store.dispatch = jest.fn();
-
-    it.todo("should render the search box");
-
-    it.todo("should render the list of items");
+    expect(screen.getByText(/queen/i)).toBeInTheDocument();
+  });
 });

@@ -1,8 +1,8 @@
 import * as React from "react";
-import renderer from 'react-test-renderer';
+import renderer from "react-test-renderer";
 
 import Footer from "../index";
 
-test("should renders the Footer component", () => {
-    expect(renderer.create(<Footer />).toJSON()).toMatchSnapshot();
+test("renders the Footer component", () => {
+  expect(renderer.create(<Footer />).toJSON()).toMatchSnapshot();
 });
