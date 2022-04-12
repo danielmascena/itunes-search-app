@@ -8,12 +8,13 @@ export const removeQueriesAndDomainFromUrl = (
   fullUrl: string,
   beginTerm = "artist"
 ) => {
-  const foundBeginIndex = fullUrl.indexOf(beginTerm),
-    foundEndIndex = fullUrl.lastIndexOf("?");
+  const normalizeURL = window.decodeURI(fullUrl);
+  const foundBeginIndex = normalizeURL.indexOf(beginTerm),
+    foundEndIndex = normalizeURL.lastIndexOf("?");
   if (foundBeginIndex !== -1) {
-    return fullUrl.slice(foundBeginIndex, foundEndIndex);
+    return normalizeURL.slice(foundBeginIndex, foundEndIndex);
   }
-  return fullUrl;
+  return normalizeURL;
 };
 
 export const getFullMediaTitle = (
