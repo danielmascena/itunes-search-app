@@ -9,10 +9,14 @@ import { getMediaDescription } from "../../helpers";
 
 const MediaResourceItem: React.FC<Media> = (props) => {
   const { artistName, artworkUrl100 } = props;
-  const [primaryText, secondaryText, additionalInformation] = getMediaDescription(props);
+  const [primaryText, secondaryText, additionalInformation] =
+    getMediaDescription(props);
 
   return (
-    <ListItem alignItems="flex-start">
+    <ListItem
+      alignItems="flex-start"
+      data-testid="list-result-item"
+    >
       {artworkUrl100 && (
         <ListItemAvatar>
           <Avatar alt={artistName} src={artworkUrl100} />

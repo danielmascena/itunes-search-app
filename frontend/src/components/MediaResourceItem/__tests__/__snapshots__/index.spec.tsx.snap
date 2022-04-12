@@ -3,6 +3,7 @@
 exports[`MediaResourceItem Component renders the MediaResourceItem component 1`] = `
 <li
   className="MuiListItem-root MuiListItem-gutters MuiListItem-padding MuiListItem-alignItemsFlexStart css-hhvo2v-MuiListItem-root"
+  data-testid="list-result-item"
   disabled={false}
 >
   <div
