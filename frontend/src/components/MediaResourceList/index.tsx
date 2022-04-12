@@ -70,10 +70,10 @@ const MediaResourceList: React.FC = React.memo(() => {
             }
           >
             {resources.map((resource: Media, index: number) => (
-              <div key={`${resource.artistId}-${index}`}>
+              <Box key={`${resource.artistId}-${index}`}>
                 <MediaResourceItem {...resource} />
                 <Divider variant="inset" component="li" />
-              </div>
+              </Box>
             ))}
           </InfiniteScroll>
         </List>
