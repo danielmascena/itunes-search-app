@@ -6,4 +6,4 @@ const ResultsNotFound: React.FC = () => (
   <Box>You got zero results. Try again changing the term of your search.</Box>
 );
 
-export default ResultsNotFound;
+export default React.memo(ResultsNotFound);
