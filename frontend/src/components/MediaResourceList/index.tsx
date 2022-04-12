@@ -7,10 +7,11 @@ import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 
+import { fetchLoadResults } from "../../store/actionCreators";
+
 import MediaResourceItem from "../MediaResourceItem";
 import ResultNotFound from "../ResultsNotFound";
-
-import { fetchLoadResults } from "../../store/actionCreators";
+import EndOfResults from "../EndOfResults";
 
 const MediaResourceList: React.FC = React.memo(() => {
   const dispatch: Dispatch<any> = useDispatch();
@@ -63,11 +64,7 @@ const MediaResourceList: React.FC = React.memo(() => {
                 <CircularProgress disableShrink />
               </Box>
             }
-            endMessage={
-              <Box component="p" sx={{ textAlign: "center" }}>
-                <b>End of the results</b>
-              </Box>
-            }
+            endMessage={<EndOfResults />}
           >
             {resources.map((resource: Media, index: number) => (
               <Box key={`${resource.artistId}-${index}`}>
