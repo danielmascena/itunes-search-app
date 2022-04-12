@@ -20,7 +20,7 @@ Run these commands from the `frontend` folder.
 
 - Run `yarn run build` to build the react app into the `build/frontend` directory **recommended**: _use a unix-based bash/terminal and also verify the folders permissions (depends the OS)_.
 
-## Step 2 (server-side)
+## Step 3 (server-side)
 
 Go back to the root folder and run the start command.
 
