@@ -2,10 +2,9 @@ import * as React from "react";
 import { useSelector } from "react-redux";
 
 import Box from "@mui/material/Box";
+import RunningWithErrorsIcon from '@mui/icons-material/RunningWithErrors';
 
 import Home from "./pages/Home";
-
-import "./App.css";
 
 const App: React.FC = () => {
   const hasErrorHappened: boolean = useSelector(
@@ -16,8 +15,8 @@ const App: React.FC = () => {
     <>
       {hasErrorHappened && (
         <Box>
-          Something bad happened with your request. Clear the searc and try
-          again
+          <RunningWithErrorsIcon color="error" />
+          Sorry for the inconvenience but something gone wrong with your request. Try redoing your search with a different query.
         </Box>
       )}
       <Home />
